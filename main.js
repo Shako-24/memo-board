@@ -1,0 +1,3 @@
+function initialTodoListInLocalStorage() {
+
+    var notes = [];
