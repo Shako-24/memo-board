@@ -54,21 +54,24 @@ function loadNotesFromStorage() {
 }
 
 function addNote(obj) {
-    const containerDiv = document.getElementById("containerDiv");
-
-    let newDate = document.createElement("div");
-    let newTime = document.createElement("div");
-    let newText = document.createElement("div");
+    let newNote = document.createElement("li")
+    let newDate = document.createElement("p");
+    let newTime = document.createElement("p");
+    let newText = document.createElement("p");
 
     newText.innerHTML = obj.text
     newDate.innerHTML = obj.date
     newTime.innerHTML = obj.time
 
+    newDate.className = "addDate";
+    newTime.className = "addTime";
+    newText.className = "addText";
+
     containerDiv.appendChild(newDate);
     containerDiv.appendChild(newTime);
     containerDiv.appendChild(newText);
 
-
+    insertNote(newNote);
 }
 function displayAllNotes(notesArr){
 
@@ -77,3 +80,9 @@ function displayAllNotes(notesArr){
     }
     
 }
+
+function insertNote(newNote){
+const ul = document.getElementById("containerDiv");
+newNote.className = "fadeIn";
+ul.insertBefore(newNote, ul.firstChild);
+};

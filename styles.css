@@ -1,5 +1,67 @@
 body {
     background: wheat url("assets/background.jpg") repeat;
-    font-family: 'Indie Flower', cursive;
     font-size: 16px;
 }
+header {
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+}
+#input-container{
+    width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+    background: url("assets/text.jpg") repeat-y;
+}
+textarea {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+    width: 450px;
+    height: 100px;
+    resize: none;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 10px 0;
+    color: rgb(84, 62, 184);
+    font-weight: 700;
+    border: 2px solid rgb(84, 62, 184);
+    background-color: #fff;
+    border-radius: 5px;
+}
+#containerDiv{
+    list-style: none;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#containerDiv li{
+    position: relative;
+    background: transparent url("assets/note.jpg") no-repeat;
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    margin: 0 5px 0 0;
+    padding: 25px 30px 5px 10px;
+    opacity: 1;
+}
+
+.addText {
+    margin: 12px auto 5px;
+    height: 160px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.addDate,
+.addTime {
+    margin: 0 auto;
+}
+
