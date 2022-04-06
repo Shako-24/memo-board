@@ -59,9 +59,10 @@ function addNote(obj) {
     let newTime = document.createElement("p");
     let newText = document.createElement("p");
 
-    newText.innerHTML = obj.text
+    
     newDate.innerHTML = obj.date
     newTime.innerHTML = obj.time
+    newText.innerHTML = obj.text
 
     newDate.className = "addDate";
     newTime.className = "addTime";
