@@ -28,11 +28,11 @@ textarea {
 }
 
 button {
-    margin: 5px;
+    margin: 5px;    
     padding: 5px 10px 0;
-    color: rgb(84, 62, 184);
+    color: rgb(184, 62, 105);
     font-weight: 800;
-    border: 2px solid rgb(84, 62, 184);
+    border: 2px solid rgb(184, 62, 105);
     background-color: #fff;
     border-radius: 5px;
 }
@@ -55,13 +55,20 @@ button {
 
 .addText {
     margin: 12px auto 5px;
-    height: 160px;
+    height: 100px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.addDate,
-.addTime {
-    margin: 0 auto;
+.removeBtn {
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    top: 20px;
+    right: 25px;
+    font-size: 10px;
+    padding: 2px;
+    color: white;
+    background-color: black;
+    border-radius: 3px;
 }
-
