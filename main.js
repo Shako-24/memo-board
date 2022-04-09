@@ -34,6 +34,7 @@ function readNoteDetails() {
         time: time,
         date: date,
         text: text,
+        id: new Date().toLocaleTimeString(),
     };
 }
 
@@ -55,19 +56,22 @@ function loadNotesFromStorage() {
 
 function addNote(obj) {
     let newNote = document.createElement("li")
-    let deleteBtn = document.createElement("p")
+    let deleteBtn = document.createElement("button")
     let newDate = document.createElement("p");
     let newTime = document.createElement("p");
     let newText = document.createElement("p");
 
+    const index = findMyIndex(obj)
+
+    newNote.setAttribute('id', `todo-${index}`);
     
     newDate.innerHTML = obj.date
     newTime.innerHTML = obj.time
     newText.innerHTML = obj.text
 
-    
+    deleteBtn.setAttribute('onclick', `deleteNote(${index})`)
 
-    deleteBtn.className = "removeBtn"
+    deleteBtn.className = "glyphicon glyphicon-remove-sign"
     newDate.className = "addDate";
     newTime.className = "addTime";
     newText.className = "addText";
@@ -78,7 +82,8 @@ function addNote(obj) {
     newNote.appendChild(newText);
 
     insertNote(newNote);
-}
+} 
+
 function displayAllNotes(notesArr){
 
     for(const note of notesArr){
@@ -93,3 +98,29 @@ newNote.className = "fadeIn";
 ul.insertBefore(newNote, ul.firstChild);
 };
 
+function deleteNote(index){
+    const myNotesList = JSON.parse(localStorage.getItem('myNotes'));
+
+    myNotesList.splice(index, 1);
+
+    localStorage.setItem('myNotes', JSON.stringify(myNotesList))
+
+    /////////////////////
+
+    const noteFromUI = document.getElementById(`todo-${index}`)
+
+    noteFromUI.remove()
+}
+    
+function findMyIndex(obj) {
+    const myNotesList = JSON.parse(localStorage.getItem('myNotes'))
+    let index = myNotesList.length; // 2
+
+    for (let i = 0; i < myNotesList.length; i++) {
+        if (obj.id === myNotesList[i].id) {
+            index = i
+        }
+    }
+   
+    return index
+}

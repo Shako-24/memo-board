@@ -27,7 +27,7 @@ textarea {
     border: 1px solid transparent;
 }
 
-button {
+#addNote {
     margin: 5px;    
     padding: 5px 10px 0;
     color: rgb(184, 62, 105);
