@@ -1,12 +1,10 @@
 function saveNote() {
 
-    // Read current JSON array from the local storage:
     const currentNotesArray = localStorage.getItem("myNotes");
 
-    // Convert to a javascript array:
     let existingNotesArray = JSON.parse(currentNotesArray);
     if (existingNotesArray === null) {
-        existingNotesArray = []; // Only on first time
+        existingNotesArray = []; 
     }
 
     const details = validationDetails()
@@ -16,10 +14,8 @@ console.log(newNote);
 
     existingNotesArray.push(newNote);
 
-    // Create a new JSON array containing the new book:
     const updatedNotesArray = JSON.stringify(existingNotesArray);
 
-    // Save the new array to the local storage:
     localStorage.setItem("myNotes", updatedNotesArray);
   
     addNote(newNote);
@@ -59,13 +55,10 @@ function readNoteDetails(details) {
 
 function loadNotesFromStorage() {
 
-    // Read current JSON array from the local storage:
     const currentNotesArray = localStorage.getItem("myNotes");
 
-    // Convert to a javascript array:
     const existingNotesArray = JSON.parse(currentNotesArray);
 
-    // If array is empty - exit this function:
     if (existingNotesArray === null) {
         return []
     }
@@ -124,7 +117,6 @@ function deleteNote(index){
 
     localStorage.setItem('myNotes', JSON.stringify(myNotesList))
 
-    /////////////////////
 
     const noteFromUI = document.getElementById(`todo-${index}`)
 
