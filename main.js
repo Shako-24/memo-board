@@ -9,7 +9,11 @@ function saveNote() {
         existingNotesArray = []; // Only on first time
     }
 
-    const newNote = readNoteDetails();
+    const details = validationDetails()
+
+    const newNote = readNoteDetails(details);
+console.log(newNote);
+
     existingNotesArray.push(newNote);
 
     // Create a new JSON array containing the new book:
@@ -21,7 +25,7 @@ function saveNote() {
     addNote(newNote);
 }
 
-function readNoteDetails() {
+function validationDetails (){
     const timeBox = document.getElementById("timeBox");
     const dateBox = document.getElementById("dateBox");
     const textBox = document.getElementById("textBox");
@@ -29,6 +33,21 @@ function readNoteDetails() {
     const time = timeBox.value;
     const date = dateBox.value;
     const text = textBox.value;
+
+    if (!time || !date || !text) {
+        return alert("Missing details, please fill in all fields")
+    }
+
+    if (text.length < 1) {
+        return alert("Missing details, please fill in all fields")
+    }
+
+    return {time: time, date:date, text:text}
+}
+function readNoteDetails(details) {
+    const time = details.time;
+    const date = details.date;
+    const text = details.text
 
     return {
         time: time,
@@ -57,29 +76,29 @@ function loadNotesFromStorage() {
 function addNote(obj) {
     let newNote = document.createElement("li")
     let deleteBtn = document.createElement("button")
-    let newDate = document.createElement("p");
     let newTime = document.createElement("p");
     let newText = document.createElement("p");
+    let newDate = document.createElement("p");
 
     const index = findMyIndex(obj)
 
     newNote.setAttribute('id', `todo-${index}`);
     
-    newDate.innerHTML = obj.date
+   
     newTime.innerHTML = obj.time
     newText.innerHTML = obj.text
-
+    newDate.innerHTML = obj.date
     deleteBtn.setAttribute('onclick', `deleteNote(${index})`)
 
-    deleteBtn.className = "glyphicon glyphicon-remove-sign"
-    newDate.className = "addDate";
+    deleteBtn.className = "removeBtn glyphicon glyphicon-remove-sign"
     newTime.className = "addTime";
     newText.className = "addText";
+    newDate.className = "addDate";
 
     newNote.appendChild(deleteBtn);
-    newNote.appendChild(newDate);
     newNote.appendChild(newTime);
     newNote.appendChild(newText);
+    newNote.appendChild(newDate);
 
     insertNote(newNote);
 } 
@@ -114,9 +133,9 @@ function deleteNote(index){
     
 function findMyIndex(obj) {
     const myNotesList = JSON.parse(localStorage.getItem('myNotes'))
-    let index = myNotesList.length; // 2
+    let index = myNotesList.length; 
 
-    for (let i = 0; i < myNotesList.length; i++) {
+    for (let i = 0; i < index; i++) {
         if (obj.id === myNotesList[i].id) {
             index = i
         }
@@ -124,3 +143,5 @@ function findMyIndex(obj) {
    
     return index
 }
+
+

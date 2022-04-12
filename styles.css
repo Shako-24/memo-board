@@ -1,7 +1,13 @@
 body {
     background: wheat url("assets/background.jpg") repeat;
     font-size: 16px;
+    font-family: myFont;
 }
+@font-face {
+    font-family:myFont ;
+    src: url(assets/RobotoMono-Italic-VariableFont_wght.ttf);
+}
+
 header {
     margin: 5px auto;
     padding: 5px;
@@ -13,6 +19,7 @@ header {
     margin: 0 auto;
     padding: 5px;
     background: url("assets/text.jpg") repeat-y;
+    font-family: myFont;
 }
 textarea {
     display: table-cell;
@@ -21,10 +28,11 @@ textarea {
     width: 300px;
     height: 100px;
     resize: none;
-    padding: 5px;
+    padding: 11px;
     margin-top: 10px;
     background-color: transparent;
     border: 1px solid transparent;
+    font-family: myFont;
 }
 
 #addNote {
@@ -40,7 +48,7 @@ textarea {
     list-style: none;
     margin: 0 auto;
     padding: 10px;
-}
+    font-family: myFont;}
 
 #containerDiv li{
     position: relative;
@@ -52,11 +60,19 @@ textarea {
     padding: 25px 30px 5px 10px;
     opacity: 1;
 }
+#containerDiv li button:first-child {
+    display: none;
+    cursor: pointer;
+}
+
+#containerDiv li:hover button:first-child {
+    display: block;
+}
 
 .addText {
-    margin: 12px auto 5px;
-    height: 100px;
-    overflow-x: hidden;
+    padding: 15px;
+    width: 100%;
+    height: 120px;
     overflow-y: scroll;
 }
 
@@ -64,11 +80,46 @@ textarea {
     position: absolute;
     text-align: center;
     vertical-align: middle;
-    top: 20px;
-    right: 25px;
+    top: 10px;
+    right: 5px;
     font-size: 10px;
     padding: 2px;
     color: white;
     background-color: black;
     border-radius: 3px;
+}
+
+.fadeIn {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-timing-function: ease-in;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.fadeOut {
+    opacity: 0;
+    animation-name: fadeOutOpacity;
+    animation-timing-function: ease-in;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
